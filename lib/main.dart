@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'bottom_nav_bar.dart';
 import 'customList/CustomListItem.dart';
 import 'helper/SQLHelper.dart';
+import 'm3u.dart';
 import 'model/channelmodel.dart';
 import 'playlist.dart';
 
@@ -22,7 +23,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   static final ValueNotifier<ThemeMode> themeNotifier =
-  ValueNotifier(ThemeMode.light);
+      ValueNotifier(ThemeMode.light);
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +81,8 @@ class _HomePageState extends State<HomePage> {
     } else {
       results = _channelList
           .where((user) => user["title"]
-          .toLowerCase()
-          .contains(enteredKeyword.toLowerCase()))
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
           .toList();
       // we use the toLowerCase() method to make it case-insensitive
     }
@@ -127,12 +128,12 @@ class _HomePageState extends State<HomePage> {
         print("pos 0");
         break;
       case 1:
-       // Get.to(M3());
+        Get.to(HomePage());
         print("pos 1");
         break;
       case 2:
         print("pos 2");
-        //   Get.to(FilePickerFromStorage());
+        Get.to(M3uList());
         break;
     }
   }
@@ -149,9 +150,9 @@ class _HomePageState extends State<HomePage> {
                     : Icons.light_mode),
                 onPressed: () {
                   MyApp.themeNotifier.value =
-                  MyApp.themeNotifier.value == ThemeMode.light
-                      ? ThemeMode.dark
-                      : ThemeMode.light;
+                      MyApp.themeNotifier.value == ThemeMode.light
+                          ? ThemeMode.dark
+                          : ThemeMode.light;
                 }),
             PopupMenuButton<int>(
               onSelected: (item) => handleClick(item),
@@ -184,26 +185,26 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: _foundUsers.isNotEmpty
                     ? ListView.builder(
-                  itemCount: _foundUsers.length,
-                  itemBuilder: (context, index) {
-                    return CustomListItem(
-                      link: _foundUsers[index]['link'],
-                      title: _foundUsers[index]['title'],
-                      thumbnail: Container(
-                        child: _foundUsers[index]['logo']
-                            .toString()
-                            .isNotEmpty
-                            ? Image.network(_foundUsers[index]['logo'])
-                            : Icon(Icons.tv),
-                      ),
-                      viewCount: 1222,
-                    );
-                  },
-                )
+                        itemCount: _foundUsers.length,
+                        itemBuilder: (context, index) {
+                          return CustomListItem(
+                            link: _foundUsers[index]['link'],
+                            title: _foundUsers[index]['title'],
+                            thumbnail: Container(
+                              child: _foundUsers[index]['logo']
+                                      .toString()
+                                      .isNotEmpty
+                                  ? Image.network(_foundUsers[index]['logo'])
+                                  : Icon(Icons.tv),
+                            ),
+                            viewCount: 1222,
+                          );
+                        },
+                      )
                     : const Text(
-                  'No results found',
-                  style: TextStyle(fontSize: 24),
-                ),
+                        'No results found',
+                        style: TextStyle(fontSize: 24),
+                      ),
               ),
             ],
           ),

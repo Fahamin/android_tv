@@ -40,8 +40,8 @@ dependencies:
   sqflite: ^2.0.2+1
   m3u: ^1.0.3
   http: ^0.13.2
-  firebase_database: ^9.0.15
-
+  firebase_core: ^1.7.0
+  firebase_database: ^8.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

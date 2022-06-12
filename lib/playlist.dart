@@ -5,6 +5,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'UserController.dart';
 import 'bottom_nav_bar.dart';
 import 'helper/SQLHelper.dart';
+import 'm3u.dart';
+import 'main.dart';
 
 class PlayListTest extends StatefulWidget {
   const PlayListTest({Key? key}) : super(key: key);
@@ -46,12 +48,12 @@ class _PlayListTestState extends State<PlayListTest> {
         print("pos 0");
         break;
       case 1:
-     //   Get.to(GetFileFromStorage());
+        Get.to(HomePage());
         print("pos 1");
         break;
       case 2:
         print("pos 2");
-        //   Get.to(FilePickerFromStorage());
+        Get.to(M3uList());
         break;
     }
   }

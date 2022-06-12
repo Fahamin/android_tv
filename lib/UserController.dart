@@ -36,10 +36,14 @@ class UserControler extends GetxController with StateMixin<List<dynamic>> {
     _singleList = data;
     if (_singleList.isNotEmpty) {
       Get.to(SingleList(_singleList));
+      print("done");
+    } else {
+      print("nothing data");
     }
   }
 
   List<Map<String, dynamic>> get singleList => _singleList;
+
   List<Map<String, dynamic>> get allChannelList => _allChannelList;
 
   @override
